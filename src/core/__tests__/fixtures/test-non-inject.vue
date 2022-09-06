@@ -1,11 +1,10 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'App',
-})
+<script lang="ts" setup>
+const a = 1
 </script>
 
 <template>
-  <div>hello world123</div>
+  <div>
+    hello world123
+    {{ a }}
+  </div>
 </template>
-

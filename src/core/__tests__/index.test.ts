@@ -22,7 +22,7 @@ describe('plugin test.', () => {
     const injectedContent = await fs.readFile(
       path.resolve(__dirname, './fixtures/test-name-injected.vue'),
     )
-    const ret = transform(content.toString(), 'test.vue')
+    const ret = transform(content.toString(), 'test-name.vue')
     expect(ret?.code).toEqual(injectedContent.toString())
   })
 
@@ -33,7 +33,7 @@ describe('plugin test.', () => {
     const injectedContent = await fs.readFile(
       path.resolve(__dirname, './fixtures/test-attr-injected.vue'),
     )
-    const ret = transform(content.toString(), 'test.vue')
+    const ret = transform(content.toString(), 'test-attr.vue')
     expect(ret?.code).toEqual(injectedContent.toString())
   })
 
@@ -44,58 +44,31 @@ describe('plugin test.', () => {
     const injectedContent = await fs.readFile(
       path.resolve(__dirname, './fixtures/test-both-injected.vue'),
     )
-    const ret = transform(content.toString(), 'test.vue')
+    const ret = transform(content.toString(), 'test-both.vue')
     expect(ret?.code).toEqual(injectedContent.toString())
   })
-  test('have no scriptSetup, No need to inject.', async () => {
+
+  test('script setup but have no name or inheritAttrs. No need to inject.', async () => {
     const content = await fs.readFile(
       path.resolve(__dirname, './fixtures/test-non-inject.vue'),
     )
     const ret = transform(content.toString(), 'test-non-inject.vue')
+    expect(ret?.code).toBe(content.toString())
+  })
+
+  test('have no scriptSetup, No need to inject.', async () => {
+    const content = await fs.readFile(
+      path.resolve(__dirname, './fixtures/test-only-script.vue'),
+    )
+    const ret = transform(content.toString(), 'test-only-script.vue')
     expect(ret).toBe(null)
   })
 
   test('have script and scriptSetup, No need to inject.', async () => {
     const content = await fs.readFile(
-      path.resolve(__dirname, './fixtures/test-had-name.vue'),
+      path.resolve(__dirname, './fixtures/test-script-scriptsetup.vue'),
     )
-    const ret = transform(content.toString(), 'test-non-inject.vue')
+    const ret = transform(content.toString(), 'test-script-scriptsetup.vue')
     expect(ret).toBe(null)
   })
-
-  // test('make sure name.', async () => {
-  //   const { name } = await createVitePlugin()
-  //   expect(name).toEqual('vite:setup-name-support')
-  // })
-
-  // test('not a vue file.', async () => {
-  //   const { transform } = await createVitePlugin()
-  //   const ret = await transform('code', 'index.html')
-  //   expect(ret).toBe(null)
-  // })
-
-  // test('disable name.', async () => {
-  //   const { transform } = plugin({ name: false })
-  //   const ret = await (transform as any)('code', 'index.vue')
-  //   expect(ret).toBe(null)
-  // })
-
-  // test('correct conversion name.', async () => {
-  //   const content = await fs.readFile(
-  //     path.resolve(__dirname, './fixtures/test.vue'),
-  //   )
-  //   const injectedContent = await fs.readFile(
-  //     path.resolve(__dirname, './fixtures/test-injected.vue'),
-  //   )
-  //   const ret = supportScriptName(content.toString(), 'test.vue')
-  //   expect(ret?.code).toEqual(injectedContent.toString())
-  // })
-
-  // test('No need to inject.', async () => {
-  //   const content = await fs.readFile(
-  //     path.resolve(__dirname, './fixtures/test-non-inject.vue'),
-  //   )
-  //   const ret = supportScriptName(content.toString(), 'test-non-inject.vue')
-  //   expect(ret).toBe(null)
-  // })
 })

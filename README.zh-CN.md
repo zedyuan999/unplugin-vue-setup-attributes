@@ -24,7 +24,7 @@ npm i unplugin-vue-setup-attributes -D
 
 在构建工具的配置文件中配置，例如**vite.config.ts**,**vue.config.js** and **webpack.config.js**
 
-vite
+**vite**
 ```ts
 // vite.config.ts
 import { Plugin, defineConfig } from 'vite'
@@ -36,7 +36,7 @@ export default defineConfig({
 })
 ```
 
-Webpack
+**Webpack**
 ```ts
 // vue.config.js
 const vueSetupAttributes = require('./script/dist/webpack').default
@@ -60,7 +60,8 @@ module.exports = {
   ]
 }
 ```
-单文件组件
+### 单文件组件
+
 ```html
 <script setup lang="ts" name="Home" inheritAttrs="false">
   import { ref } from 'vue'
