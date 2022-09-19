@@ -1,6 +1,6 @@
 {
   "name": "unplugin-vue-setup-attributes",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "packageManager": "pnpm@7.1.1",
   "description": "Extend vue script setup syntax,make it support the name and inheritAttrs attribute.",
   "license": "MIT",
@@ -65,7 +65,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup & npm run build:fix",
     "dev": "tsup --watch src",
     "build:fix": "esno scripts/postbuild.ts",
     "lint": "eslint .",
