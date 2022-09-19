@@ -2,7 +2,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { describe, expect, test } from 'vitest'
 import plugin from '../..'
-import { transform } from '..'
+import { transform } from '../transform'
 
 describe('plugin test.', () => {
   test('make sure name.', async () => {

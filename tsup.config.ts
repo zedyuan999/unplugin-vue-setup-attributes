@@ -1,11 +1,10 @@
 import type { Options } from 'tsup'
 
 export default <Options>{
-  entryPoints: [
-    'src/*.ts',
-  ],
-  clean: true,
+  entry: ['src/*.ts'],
   format: ['cjs', 'esm'],
   dts: true,
-  onSuccess: 'npm run build:fix',
+  splitting: true,
+  clean: true,
+  shims: false,
 }
