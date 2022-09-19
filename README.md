@@ -43,7 +43,7 @@ export default defineConfig({
 module.exports = {
   configureWebpack: {
     plugins: [
-      require('./script/dist/webpack')()
+      require('unplugin-vue-setup-attributes')()
     ]
   },
 }
@@ -54,7 +54,7 @@ module.exports = {
 
 module.exports = {
   plugins: [
-    require('./script/dist/webpack')()
+    require('unplugin-vue-setup-attributes')()
   ]
 }
 ```
